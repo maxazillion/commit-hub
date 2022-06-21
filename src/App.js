@@ -19,7 +19,8 @@ function App() {
   return (
     <div className={"app"} style={styles.main}>
       <Header/>
-      <Body commitData={testData}/>
+      {repos.length !== 0 ? <Body commitData={repos}/> : null}
+
       <Footer/>
     </div>
 

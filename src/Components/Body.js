@@ -16,17 +16,16 @@ function Body({commitData}) {
   function renderCarousel(){
 
     return displayedIndexes.map((index) => {
-
       let size = Math.abs(center - index);
 
       let render = false;
-      if(Math.abs(index - center) < 3) render = true;
+      if(Math.abs(index - center) < 2) render = true;
       if(render) {
         return <GitHubCards
           cardSize={size}
           index={index}
-          date={commitData[index].date}
-          commit={commitData[index].commit}
+          date={commitData[index].commit.committer.date}
+          commit={commitData[index].commit.message}
           setDisplayed={setCenter}
           totalData={totalData}
         />
