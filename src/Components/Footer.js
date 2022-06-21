@@ -4,8 +4,15 @@ function Footer(){
 
 
   return (
-    <h1>foot</h1>
+    <div style={styles.main}>foot</div>
   )
 }
 
 export default Footer;
+
+const styles = {
+  main: {
+    alignSelf: "end",
+    justifySelf: "end"
+  }
+}
