@@ -5,7 +5,7 @@ function getCommits(setLoading, setRepos){
   setLoading(true);
   axios({
     method: "get",
-    url: "https://api.github.com/repos/maxazillion/sudoku/commits",
+    url: "https://api.github.com/repos/maxazillion/commit-hub/commits",
   }).then(res=> {
     setLoading(false);
     setRepos(res.data)

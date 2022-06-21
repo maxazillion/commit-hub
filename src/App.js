@@ -1,10 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import {Button, Card} from "react-bootstrap";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {Body, Footer, Header} from "./Components";
 import {colors, testData} from "./Utils";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import getCommits from "./API/getCommits";
 
 
