@@ -12,8 +12,6 @@ function App() {
 
   if(repos.length === 0 && loading === false)getCommits(setLoading, setRepos);
 
-  console.log(repos)
-
   return (
     <div className={"app"} style={styles.main}>
       <Header/>

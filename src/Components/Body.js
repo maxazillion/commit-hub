@@ -23,6 +23,7 @@ function Body({commitData}) {
         return <GitHubCards
           cardSize={size}
           index={index}
+          key={index}
           date={date.toLocaleString()}
           commit={commitData[index].commit.message}
           setDisplayed={setCenter}
