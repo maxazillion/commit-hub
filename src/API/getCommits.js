@@ -8,7 +8,8 @@ function getCommits(setLoading, setRepos){
     url: "https://api.github.com/repos/maxazillion/commit-hub/commits",
   }).then(res=> {
     setLoading(false);
-    setRepos(res.data)
+    // reverse to get into chronological order
+    setRepos(res.data.reverse())
   })
 }
 

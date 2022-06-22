@@ -18,5 +18,7 @@ const styles = {
     justifySelf: "end",
     margin: "1em",
     padding: "1em",
+    marginTop: 0,
+    paddingTop: 0,
   }
 }

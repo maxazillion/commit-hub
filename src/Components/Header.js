@@ -2,8 +2,6 @@ import {Button, Card} from "react-bootstrap";
 import {colors} from "../Utils";
 
 function Header(){
-
-
   return (
     <div style={styles.main}>
       <h1 style={styles.title}>Commit Hub</h1>

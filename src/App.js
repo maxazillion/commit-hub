@@ -1,7 +1,7 @@
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {Body, Footer, Header} from "./Components";
-import {colors, testData} from "./Utils";
+import {colors} from "./Utils";
 import {useState} from "react";
 import getCommits from "./API/getCommits";
 

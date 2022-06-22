@@ -8,7 +8,7 @@ function Body({commitData}) {
 
   // if the length of data is less than 5, display them in a row
   const [totalData] = useState(commitData.length - 1);
-  const [center, setCenter] = useState(2);
+  const [center, setCenter] = useState(1);
   const [displayedIndexes] = useState(commitData.map((d, i) => i))
 
   function renderCarousel() {
