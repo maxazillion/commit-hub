@@ -2,29 +2,28 @@ import {Button, Card, Carousel} from "react-bootstrap";
 import {colors} from "../Utils";
 import {GitHubCards} from "./index";
 import {useState} from "react";
-import {map, tail, times, uniq} from 'lodash';
 
 
 function Body({commitData}) {
 
   // if the length of data is less than 5, display them in a row
-
   const [totalData] = useState(commitData.length - 1);
   const [center, setCenter] = useState(2);
-  const [displayedIndexes] = useState(commitData.map((d, i)=> i))
+  const [displayedIndexes] = useState(commitData.map((d, i) => i))
 
-  function renderCarousel(){
+  function renderCarousel() {
 
     return displayedIndexes.map((index) => {
       let size = Math.abs(center - index);
 
       let render = false;
-      if(Math.abs(index - center) < 2) render = true;
-      if(render) {
+      if (Math.abs(index - center) < 2) render = true;
+      if (render) {
+        let date = new Date(commitData[index].commit.committer.date)
         return <GitHubCards
           cardSize={size}
           index={index}
-          date={commitData[index].commit.committer.date}
+          date={date.toLocaleString()}
           commit={commitData[index].commit.message}
           setDisplayed={setCenter}
           totalData={totalData}
@@ -36,13 +35,18 @@ function Body({commitData}) {
 
   return (
     <div style={styles.main}>
-      {totalData < 5 ?
-        commitData.map((data, key) => {
-          return <GitHubCards cardSize={2} key={key} date={data.date} commit={data.commit}/>
-        })
-        :
-        renderCarousel()
-      }
+      <div style={styles.carouselContainer}>
+        {totalData < 5 ?
+          commitData.map((data, key) => {
+            return <GitHubCards cardSize={2} key={key} date={data.date} commit={data.commit}/>
+          })
+          :
+          renderCarousel()
+        }
+      </div>
+      <div style={styles.counterDiv}>
+        <h2 style={{color: colors.primary}}>{`${center + 1}/${totalData + 1}`}</h2>
+      </div>
     </div>
   )
 }
@@ -50,17 +54,15 @@ function Body({commitData}) {
 export default Body;
 
 const styles = {
-  main: {
+  carouselContainer: {
     color: colors.tertiary,
     backgroundColor: colors.tertiary,
     height: "90%",
-    width: "90%",
+    width: "100%",
     alignSelf: "center",
-    borderRadius: "10px",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
-
+    justifyContent: "center",
   },
   carousel: {
     width: "100%",
@@ -77,4 +79,18 @@ const styles = {
     color: colors.primary,
     backgroundColor: "blue"
   },
+  counterDiv: {
+    backgroundColor: colors.tertiary,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  main: {
+    height: "100%",
+    width: "100%",
+    alignSelf: "center",
+    display: "flex",
+    flexDirection: "column"
+  }
+
 }
